@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+"use strict";
+
+const flaggedRespawn = require("flagged-respawn");
+const v8flags = require("v8flags");
+const projectPath = process.cwd();
+const { startStrapiREPL } = require("../index.js");
+
+v8flags(function (err, v8flags) {
+  let args = [...process.argv];
+  args.push("--experimental-repl-await");
+  flaggedRespawn(v8flags, args, (ready) => {
+    if (ready) {
+      startStrapiREPL(projectPath).catch((e) => {
+        console.error(e);
+        process.exit(1);
+      });
+    }
+  });
+});

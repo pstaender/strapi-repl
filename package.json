@@ -1,0 +1,27 @@
+{
+  "name": "strapi-repl",
+  "version": "0.0.1",
+  "description": "Strapi REPL console with improved features",
+  "main": "./bin",
+  "bin": {
+    "strapi-repl": "bin/strapi-repl"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/pstaender/strapi-repl"
+  },
+  "keywords": [
+    "strapi",
+    "repl",
+    "console"
+  ],
+  "author": "Philipp Staender",
+  "license": "MIT",
+  "dependencies": {
+    "flagged-respawn": "^1.0.1",
+    "v8flags": "^3.2.0"
+  }
+}
