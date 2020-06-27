@@ -9,6 +9,12 @@ Strapi has a built in console (`strapi console`). However, compared to the built
 
 For security reasons, the `.reload` feature is only available in development mode.
 
+## Installation
+
+```sh
+  $ npm install -g strapi-repl
+```
+
 ## Run
 
 ```sh
