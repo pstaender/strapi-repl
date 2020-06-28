@@ -1,11 +1,13 @@
 const REPL = require("repl");
 
-let startStrapiREPL = async (pathToStrapiModule) => {
-  let initStrapiApp = async () =>
-    await require(`${pathToStrapiModule}/node_modules/strapi`)().load();
+let initStrapiApp = async (pathToStrapiModule) => {
+  return await require(`${pathToStrapiModule}/node_modules/strapi`)().load();
+};
 
-  let strapi = await initStrapiApp();
-  let environment = process.env.NODE_ENV;
+let startStrapiREPL = async (pathToStrapiModule) => {
+  let strapi = await initStrapiApp(pathToStrapiModule);
+  // environment is set to development by default via strapi
+  const environment = process.env.NODE_ENV;
   console.log(
     `Strapi-REPL v${
       require(`${__dirname}/package.json`).version
@@ -29,20 +31,11 @@ let startStrapiREPL = async (pathToStrapiModule) => {
   repl.defineCommand("reload", {
     help: "Reload strapi",
     async action() {
-      if (environment === "development") {
-        process.stdout.write("reloading");
-        let loadingIndicator = setInterval(
-          () => process.stdout.write("."),
-          250
-        );
-        repl.context.strapi = strapi = await initStrapiApp();
-        clearInterval(loadingIndicator);
-        console.log("");
-      } else {
-        console.log(
-          ".reload is exclusively available in development environment"
-        );
-      }
+      process.stdout.write("reloading");
+      let loadingIndicator = setInterval(() => process.stdout.write("."), 250);
+      repl.context.strapi = strapi = await initStrapiApp(pathToStrapiModule);
+      clearInterval(loadingIndicator);
+      console.log("");
       this.displayPrompt();
     },
   });
