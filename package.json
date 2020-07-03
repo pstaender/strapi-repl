@@ -1,17 +1,21 @@
 {
   "name": "strapi-repl",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Strapi REPL console with improved features",
   "main": "./bin",
   "bin": {
     "strapi-repl": "bin/strapi-repl"
   },
+  "homepage": "https://github.com/pstaender/strapi-repl",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "github.com/pstaender/strapi-repl"
+    "url": "git://github.com/pstaender/strapi-repl"
+  },
+  "bugs": {
+    "url": "https://github.com/pstaender/strapi-repl/issues"
   },
   "keywords": [
     "strapi",
